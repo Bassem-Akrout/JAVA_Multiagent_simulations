@@ -30,3 +30,5 @@ runTestInvader: compileTestInvader
 clean:
 	rm -rf bin/
 
+#dans src
+#javac -d ../bin -classpath ../lib/gui.jar:../bin TestBallsSimulator.java 
