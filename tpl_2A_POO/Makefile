@@ -32,3 +32,6 @@ clean:
 
 #dans src
 #javac -d ../bin -classpath ../lib/gui.jar:../bin TestBallsSimulator.java 
+#dans racine
+#java -classpath bin:lib/gui.jar TestBallsSimulator
+

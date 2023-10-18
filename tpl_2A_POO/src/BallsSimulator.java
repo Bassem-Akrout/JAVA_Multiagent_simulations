@@ -1,9 +1,11 @@
 import gui.GUISimulator;
 import java.awt.Color;
 import java.awt.Point;
-import gui.Rectangle;
-import java.util.ArrayList;
 import gui.Simulable;
+import gui.Oval;
+import gui.Rectangle;
+
+import java.util.ArrayList;
 
 
 public class BallsSimulator implements Simulable {
@@ -25,22 +27,20 @@ public class BallsSimulator implements Simulable {
 
         // Effacer l'écran
         gui.reset();
+        gui.addGraphicalElement(new Rectangle( (1850/2), (930/2), Color.RED, Color.BLACK, 1848,928));
 
-// Dessiner les balles sous forme de cercles
-for (Point ball : balls.getBalls()) {
-    int centerX = ball.x;
-    int centerY = ball.y;
-    int radius = 20; // Rayon du cercle
-
-    int numRectangles = 36; // Nombre de rectangles pour former le cercle
-    for (int i = 0; i < numRectangles; i++) {
-        double angle = 2 * Math.PI * i / numRectangles;
-        int rectX = (int) (centerX + radius * Math.cos(angle));
-        int rectY = (int) (centerY + radius * Math.sin(angle));
-        gui.addGraphicalElement(new Rectangle(rectX, rectY, Color.RED, Color.RED, 5));
-    }
-    gui.addGraphicalElement(new Rectangle(centerX, centerY, Color.RED, Color.RED, 30));
-}
+        // Dessiner les balles sous forme de cercles
+        ArrayList<Point> ballsList= this.balls.getBalls();
+        ArrayList<int[]> ballsColors = this.balls.getColors();
+        // On parcours toutes les balles , on les colore et on dessine ! 
+        for (int i=0 ; i< ballsList.size() ; i++){
+            Point ball = ballsList.get(i);
+            int centerX = ball.x;
+            int centerY = ball.y;
+            int radius = 5; // Rayon du cercle
+            Color ballColor = new Color(ballsColors.get(i)[0],ballsColors.get(i)[1],ballsColors.get(i)[2]);
+            gui.addGraphicalElement(new Oval(centerX, centerY, ballColor,ballColor, 2*radius, 2*radius));
+        }
     }
 
     @Override
@@ -50,23 +50,21 @@ for (Point ball : balls.getBalls()) {
 
         // Effacer l'écran
         gui.reset();
+        gui.addGraphicalElement(new Rectangle( (1850/2), (930/2), Color.RED, Color.BLACK, 1848,928));
 
 // Dessiner les balles sous forme de cercles
-for (Point ball : balls.getBalls()) {
-    int centerX = ball.x;
-    int centerY = ball.y;
-    int radius = 20; // Rayon du cercle
+        ArrayList<Point> ballsList = this.balls.getBalls();
+        ArrayList<int[]> ballsColors = this.balls.getColors();
 
-    int numRectangles = 36; // Nombre de rectangles pour former le cercle
-    for (int i = 0; i < numRectangles; i++) {
-        double angle = 2 * Math.PI * i / numRectangles;
-        int rectX = (int) (centerX + radius * Math.cos(angle));
-        int rectY = (int) (centerY + radius * Math.sin(angle));
-        gui.addGraphicalElement(new Rectangle(rectX, rectY, Color.RED, Color.RED, 5));
-    }
-    gui.addGraphicalElement(new Rectangle(centerX, centerY, Color.RED, Color.RED, 30));
-
-}
+        for (int i=0 ; i< ballsList.size() ; i++){
+            Point ball = ballsList.get(i);
+            int centerX = ball.x;
+            int centerY = ball.y;
+            int radius = 5; // Rayon du cercle
+            Color ballColor = new Color(ballsColors.get(i)[0],ballsColors.get(i)[1],ballsColors.get(i)[2]);
+            gui.addGraphicalElement(new Oval(centerX, centerY, ballColor,ballColor, 2*radius, 2*radius));
+            
+        }
     }
 }
 
