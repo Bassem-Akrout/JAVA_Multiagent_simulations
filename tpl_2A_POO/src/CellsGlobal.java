@@ -2,6 +2,8 @@ import java.awt.Point;
 import java.awt.Color;
 import java.util.Random;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 
 public class CellsGlobal {
@@ -27,10 +29,10 @@ public class CellsGlobal {
         Random random= new Random();
         int cellWidth= screenWidth/nbrColumns;
         int cellHeight= screenHeight/nbrRows;
-
         Color[] colorList;
+
         if(modelType==0){
-            nbrStates=2; //useful for line 64
+            nbrStates=2; //useful for line 62
             colorList =new Color[]{Color.BLACK,Color.WHITE};
         }
         else if(modelType==1){
@@ -39,7 +41,6 @@ public class CellsGlobal {
                 int j=i*(256/nbrStates);
                 colorList[i]=new Color(j,j,j);
             }
-            
         }
         else if (modelType==2){
             colorList =new Color[nbrStates+1];
@@ -47,10 +48,10 @@ public class CellsGlobal {
             for (int i=1; i<nbrStates+1;i++){
                 colorList[i]=new Color(random.nextInt(10,256),random.nextInt(10,256),random.nextInt(10,256));        
             }
-            nbrStates+=1; //useful for line 64
+            nbrStates+=1; //useful for line 62
         }
         else{
-            throw new IllegalArgumentException("Veuillez choisir un modèle valable entre 0 et 2 ");/////////// mettre dans testSimuCell
+            throw new IllegalArgumentException("Veuillez choisir un modèle valable entre 0 et 2 ");//Redondance 
         }
 
         //Cells init
@@ -178,29 +179,44 @@ public class CellsGlobal {
             }
 
         }   
-        else if (modelType==2){
-            Random random= new Random();
-            for(int row=0; row<nbrRows;row++){
-                for (int column=0; column<nbrColumns;column++){
-                    Color actualColor=colors[row][column];
-                    if (actualColor.getRed()==0){
-                        continue;
-                    }
-                    int neighbors=countNeighbors(row, column, modelType);
-                    if (neighbors<=threshold){
-                        newColors[row][column]=Color.BLACK;
+        else if (modelType == 2) {
+            Random random = new Random();
+            List<Point> shuffledCells = new ArrayList<>();
 
-                        int idxRandomUnoccupiedCell=random.nextInt(unoccupiedCells.size());
-                        int[] randomUnoccupiedCell=unoccupiedCells.get(idxRandomUnoccupiedCell);
-
-                        unoccupiedCells.set(idxRandomUnoccupiedCell, new int[] {row,column});
-                        newColors[randomUnoccupiedCell[0]][randomUnoccupiedCell[1]]=actualColor;
-                    }
-                    else{
-                        newColors[row][column]=actualColor;
+            // Ajoutez toutes les cellules à la liste des cellules mélangées
+            for (int row = 0; row < nbrRows; row++) {
+                for (int column = 0; column < nbrColumns; column++) {
+                    Color actualColor = colors[row][column];
+                    if (actualColor.getRed() != 0) {
+                        shuffledCells.add(new Point(row, column));
                     }
                 }
             }
+
+            Collections.shuffle(shuffledCells, random); // Mélangez la liste
+
+            // Parcourez les cellules mélangées
+            for (Point cell : shuffledCells) {
+                int row = cell.x;
+                int column = cell.y;
+
+                Color actualColor = colors[row][column];
+                int neighbors = countNeighbors(row, column, modelType);
+
+                if (neighbors < threshold) {
+                    newColors[row][column] = Color.BLACK;
+
+                    int idxRandomUnoccupiedCell = random.nextInt(unoccupiedCells.size());
+                    int[] randomUnoccupiedCell = unoccupiedCells.get(idxRandomUnoccupiedCell);
+
+                    unoccupiedCells.set(idxRandomUnoccupiedCell, new int[]{row, column});
+                    newColors[randomUnoccupiedCell[0]][randomUnoccupiedCell[1]] = actualColor;
+                } else {
+                    newColors[row][column] = actualColor;
+                }
+            }
+        
+
 
             for (int[] element:unoccupiedCells){
                 newColors[element[0]][element[1]]=Color.BLACK;

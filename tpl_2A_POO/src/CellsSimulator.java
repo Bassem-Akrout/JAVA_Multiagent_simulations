@@ -10,19 +10,19 @@ import gui.Rectangle;
 public class CellsSimulator implements Simulable {
     private CellsGlobal cells;  // Référence vers l'objet Cells
     private GUISimulator gui;  // Référence vers l'interface graphique
-    private int screen_width;
-    private int screen_height;
-    private int nbr_rows;
-    private int nbr_columns;
+    private int screenWidth;
+    private int screenHeight;
+    private int nbrRows;
+    private int nbrColumns;
     private int modelType;
 
-    public CellsSimulator(GUISimulator gui, int screen_width, int screen_height,int nbr_rows,int nbr_columns,int nbrStates, int threshold, int modelType) {
-        this.cells = new CellsGlobal(nbr_rows, nbr_columns, screen_width, screen_height,nbrStates,threshold,modelType);
+    public CellsSimulator(GUISimulator gui, int screenWidth, int screenHeight,int nbrRows,int nbrColumns,int nbrStates, int threshold, int modelType) {
+        this.cells = new CellsGlobal(nbrRows, nbrColumns, screenWidth, screenHeight,nbrStates,threshold,modelType);
         this.gui = gui;
-        this.screen_height = screen_height;
-        this.screen_width = screen_width;
-        this.nbr_rows = nbr_rows;  // Mettez le nombre de lignes correct (30 dans ce cas)
-        this.nbr_columns = nbr_columns;  // Mettez le nombre de colonnes correct (20 dans ce cas)
+        this.screenHeight = screenHeight;
+        this.screenWidth = screenWidth;
+        this.nbrRows = nbrRows;  // Mettez le nombre de lignes correct (30 dans ce cas)
+        this.nbrColumns = nbrColumns;  // Mettez le nombre de colonnes correct (20 dans ce cas)
         this.modelType=modelType;
     }
     
@@ -37,7 +37,7 @@ public class CellsSimulator implements Simulable {
         //add grid
         for (int i=0;i<colors.length;i++){
             for(int j=0;j<colors[0].length;j++){
-                gui.addGraphicalElement(new Rectangle(cellss[i][j].x, cellss[i][j].y, Color.GREEN, colors[i][j], screen_width / nbr_columns, screen_height / nbr_rows));
+                gui.addGraphicalElement(new Rectangle(cellss[i][j].x, cellss[i][j].y, Color.GREEN, colors[i][j], screenWidth / nbrColumns, screenHeight / nbrRows));
             }
         }
         //System.out.println("just finished next");
@@ -54,7 +54,7 @@ public class CellsSimulator implements Simulable {
         Point[][] cellss=cells.getCells();
         for (int i=0;i<colors.length;i++){
             for(int j=0;j<colors[0].length;j++){
-                gui.addGraphicalElement(new Rectangle(cellss[i][j].x, cellss[i][j].y, Color.GREEN, colors[i][j], screen_width / nbr_columns, screen_height / nbr_rows));
+                gui.addGraphicalElement(new Rectangle(cellss[i][j].x, cellss[i][j].y, Color.GREEN, colors[i][j], screenWidth / nbrColumns, screenHeight / nbrRows));
             }
 
         }
