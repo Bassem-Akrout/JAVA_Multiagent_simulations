@@ -22,9 +22,11 @@ public class Boid {
         return mass;
     }
 
-    double MASS_CST=100;
-    double SEP_CST=1000;
-    double ALIGN_CST=0.1;
+    //constantes pour controller les forces
+    double MASS_CST=1;
+    double SEP_CST=10;
+    double ALIGN_CST=0.01;
+
     private double adjustForBorder(double value, double limit) {
         if (value > limit / 2) {
             value -= limit;

@@ -107,18 +107,19 @@ public class Boids {
                     (cohesionForce.getX() + separationForce.getX() + alignmentForce.getX()) / boid.getMass(),
                     (cohesionForce.getY() + separationForce.getY() + alignmentForce.getY()) / boid.getMass()
             );
-    
+            neighborsSep = getNeighbors(boid, screenWidth, screenHeight, 20);
             for (Boid otherBoid : neighborsSep) {
                 if (otherBoid.getMass() < mass) {
                     double distanceX = Math.abs(otherBoid.getPosition().getX() - boid.getPosition().getX());
                     double distanceY = Math.abs(otherBoid.getPosition().getY() - boid.getPosition().getY());
-                    double distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
-                    if (distance <= 10) {
+                    double distance = distanceX * distanceX + distanceY * distanceY;
+                    if (distance <= 100) {
                         // Add boid to the removal list
                         boidsToRemove.add(otherBoid);
                     }
                 }
             }
+            
             // Update the position of the boid based on the acceleration
             boid.update(totalAcceleration, screenWidth, screenHeight);
                         

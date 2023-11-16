@@ -1,3 +1,5 @@
+import EventPackage.EventManager;
+
 import gui.GUISimulator;
 import gui.Oval;
 import gui.Simulable;
@@ -8,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Random;
 
 public class BoidsEventsSimulator  implements Simulable {
     private Boids boids; // Référence vers l'objet Boids
@@ -16,17 +19,25 @@ public class BoidsEventsSimulator  implements Simulable {
     private double screenHeight;
     private EventManager eventManager; 
     private int nbrTypes;
+    private Color[] colorList;
 
     public BoidsEventsSimulator(GUISimulator gui, int numBoids, double screenWidth, double screenHeight,int nbrTypes) {
-        super();
         this.boids = new Boids(numBoids, screenWidth, screenHeight,nbrTypes);
         this.gui = gui;
         this.screenWidth = screenWidth;
         this.screenHeight = screenHeight;
         this.eventManager= new EventManager();
         this.nbrTypes=nbrTypes;
+        colorList =new Color[nbrTypes];
+        Random random= new Random();
+
+        for (int i=0; i<nbrTypes;i++){
+            colorList[i]=new Color(random.nextInt(10,256),random.nextInt(10,256),random.nextInt(10,256));        
+        }
         initializeGraphics();
         scheduleSimulationEvents(); 
+
+
 
     }
     private void initializeGraphics() {
@@ -35,7 +46,7 @@ public class BoidsEventsSimulator  implements Simulable {
         for (Boid boid : currentBoids) {
             Point2D.Double position = boid.getPosition();
             int k =boid.getMass();
-            gui.addGraphicalElement(new Oval((int) position.x, (int) position.y, new Color(255/k, 255/k, 255/k), new Color(255/k, 255/k, 255/k), 10 * boid.getMass(), 10 * boid.getMass()));
+            gui.addGraphicalElement(new Oval((int) position.x, (int) position.y,colorList[k-1], colorList[k-1], 10 * boid.getMass(), 10 * boid.getMass()));
 
         }
         // Ajoutez d'autres éléments graphiques si nécessaire
@@ -52,7 +63,7 @@ public class BoidsEventsSimulator  implements Simulable {
             //add only the events relating to the correct boidGroups
             for (int boidGroup = 1; boidGroup <= nbrTypes; boidGroup++) {
                 if (eventDate%boidGroup==0){
-                    eventManager.addEvent(new BoidsEvent(eventDate,boids,gui,screenWidth,screenHeight,boidGroup));
+                    eventManager.addEvent(new BoidsEvent(eventDate,boids,gui,screenWidth,screenHeight,boidGroup,colorList));
                 }
             }
         }

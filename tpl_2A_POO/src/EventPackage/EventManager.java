@@ -1,3 +1,5 @@
+package EventPackage;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -11,13 +13,10 @@ public class EventManager {
         currentDate = 0;
         events = new ArrayList<>();
     }
-    public List<Event> getEvents(){
-        return events;
-    }
+
     // Ajoute un évènement au gestionnaire
     public void addEvent(Event event) {
         events.add(event);
-        
         Collections.sort(events, Comparator.comparingLong(Event::getDate)); // Trie la liste des évènements par date
     }
 
@@ -25,17 +24,17 @@ public class EventManager {
     public void next() {
         currentDate++;
         List<Event> currentEvents = new ArrayList<>();
+
         // Sélectionne les évènements à exécuter à la date courante
         for (Event event : events) {
             if (event.getDate() <= currentDate) {
                 currentEvents.add(event);
             }
         }
-        
+
         // Exécute les évènements
         for (Event event : currentEvents) {
             event.execute();
-            
             events.remove(event); // Retire les évènements exécutés de la liste
         }
     }

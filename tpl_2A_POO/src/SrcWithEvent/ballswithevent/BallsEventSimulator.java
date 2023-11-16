@@ -1,3 +1,5 @@
+import EventPackage.EventManager;
+
 import gui.GUISimulator;
 import java.awt.Color;
 import java.awt.Point;

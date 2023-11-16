@@ -1,3 +1,5 @@
+import EventPackage.Event;
+
 import java.util.ArrayList;
 import gui.Rectangle;
 import java.awt.Point;

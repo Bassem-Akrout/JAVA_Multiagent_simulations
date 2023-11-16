@@ -1,3 +1,5 @@
+package EventPackage;
+
 public abstract class Event {
     private final long date;
 
@@ -10,5 +12,4 @@ public abstract class Event {
     }
 
     public abstract void execute();
-    
 }

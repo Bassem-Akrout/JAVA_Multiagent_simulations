@@ -1,3 +1,5 @@
+import EventPackage.Event;
+
 import gui.GUISimulator;
 import gui.Oval;
 import gui.Simulable;
@@ -12,14 +14,17 @@ public class BoidsEvent extends Event{
     private double screenWidth;
     private double screenHeight; 
     private int boidsGroup;
+    private Color[] colorList;
 
-    public BoidsEvent (int date , Boids boids,GUISimulator gui, double screenWidth,double screenHeight,int boidsGroup ) {
+    public BoidsEvent (int date , Boids boids,GUISimulator gui, double screenWidth,double screenHeight,int boidsGroup,Color[] colorList ) {
         super( date ) ;
         this.boids=boids;
         this.gui=gui;
         this.screenHeight=screenHeight;
         this.screenWidth=screenWidth;
         this.boidsGroup = boidsGroup;
+        this.colorList=colorList;
+        
         }
     @Override
     public void execute() {
@@ -34,7 +39,7 @@ public class BoidsEvent extends Event{
         for (Boid boid : currentBoids) {
             Point2D.Double position = boid.getPosition();
             int k = boid.getMass();
-            gui.addGraphicalElement(new Oval((int) position.x, (int) position.y, new Color(255 / k, 255 / k, 255 / k), new Color(255 / k, 255 / k, 255 / k), 10 * boid.getMass(), 10 * boid.getMass()));
+            gui.addGraphicalElement(new Oval((int) position.x, (int) position.y, colorList[k-1], colorList[k-1], 10 * boid.getMass(), 10 * boid.getMass()));
         }
     
         // Ajouter des éléments graphiques pour représenter le "sang" où les boids ont été mangés
