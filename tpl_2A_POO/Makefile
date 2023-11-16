@@ -19,19 +19,56 @@
 #   -sourcepath : répertoire dans lequel sont cherchés les .java
 #   -classpath : répertoire dans lequel sont cherchées les classes compilées (.class et .jar)
 
-all: runTestInvader 
 
+all : compileTestInvader compileTestBallsEvent compileTestBallsNoEvent compileTestCellsNoEvent compileTestCellsEvent compileTestBoidsNoEvent compileTestBoidsEvent
 compileTestInvader:
 	javac -d bin -classpath lib/gui.jar src/TestInvader.java
 
-runTestInvader: compileTestInvader
+
+compileTestBallsEvent:
+	javac -d bin -classpath lib/gui.jar:src/ src/SrcWithEvent/ballswithevent/*.java
+
+compileTestBallsNoEvent:
+	javac -d bin -classpath lib/gui.jar:src/ src/SrcNoEvent/balls/*.java
+
+compileTestCellsNoEvent:
+	javac -d bin -classpath lib/gui.jar:src/ src/SrcNoEvent/Cells/*.java
+
+compileTestCellsEvent:
+	javac -d bin -classpath lib/gui.jar:src/ src/SrcWithEvent/cells_with_event/*.java
+
+compileTestBoidsNoEvent:
+	javac -d bin -classpath lib/gui.jar:src/ src/SrcNoEvent/boidsNoEvent/*.java
+
+compileTestBoidsEvent:
+	javac -d bin -classpath lib/gui.jar:src/ src/SrcWithEvent/boids_with_event/*.java
+
+runTestInvader:
 	java -classpath bin:lib/gui.jar TestInvader
+
+runTestBallsEvent: 
+	java -classpath bin:lib/gui.jar TestBallsEventSimulator
+
+runTestBallsNoEvent:
+	java -classpath bin:lib/gui.jar TestBallsNoEventSimulator
+
+runTestCellsNoEvent:
+	java -classpath bin:lib/gui.jar TestCellsNoEventSimulator
+
+runTestCellsEvent: 
+	java -classpath bin:lib/gui.jar TestCellsEventSimulator
+
+runTestBoidsNoEvent: 
+	java -classpath bin:lib/gui.jar TestBoidsNoEventSimulator
+
+runTestBoidsEvent: 
+	java -classpath bin:lib/gui.jar TestBoidsEventSimulator
+
+runall: runTestInvader runTestBallsEvent runTestBallsNoEvent runTestCellsNoEvent runTestCellsEvent runTestBoidsNoEvent runTestBoidsEvent
 
 clean:
 	rm -rf bin/
 
-#dans src
-#javac -d ../bin -classpath ../lib/gui.jar:../bin TestBallsSimulator.java 
-#dans racine
-#java -classpath bin:lib/gui.jar TestBallsSimulator
+
+
 
