@@ -10,10 +10,18 @@ Une mini-introdution à la notation UML des diagrammes de classes est disponibe 
 
 
 ## Compilation & exécution
-### Avec un makefile?
-Un fichier Makefile est distribué pour facilement compiler et exécuter le fichier TestInvader.java
+### Avec un makefile? C'est plus facile non ? 
+On vous donne la chance de choisir ***les paramètres*** pour les automates cellulaires , le jeu de Conway et le modèle de Schelling ! 
 
-Mais vu la taille de ce projet, il est ***très fortement recommandé d'utiliser un IDE*** pour compiler, exécuter et déboguer votre code!
+On vous a fourni un MakeFile à la racine ! 
+L'éxecution est assez facile .Voici comment la magie se passe: 
+***make*** dans le terminal: compile tous les jeux et démos(avec EventManager et sans aussi ! Intéréssant tout ça ) ! 
+
+***Maintenant pour exécuter un jeu précis*** : Disons que je veux exécuter Boids mais avec l'EventManager. Dans le MakeFile fourni vous trouvez la commande make à exécuter : ***runTestBoidsEvent*** il suffit de taper dans le terminal et à la racine du projet ***make runTestBoidsEvent***  ! 
+Cette simple démo s'applique à tous les autres jeux du projet ! 
+
+Profitez et n'oubliez pas de jeter un coup d'oeil sur le ***Rapport*** pour savoir plus à propos de notre structuration .
+
 
 ### IDE Idea Intellij
 - créer un nouveau projet:
