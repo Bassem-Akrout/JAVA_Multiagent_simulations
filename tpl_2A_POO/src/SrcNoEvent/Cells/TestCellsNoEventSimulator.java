@@ -2,7 +2,7 @@ import gui.GUISimulator;
 import java.util.Scanner;
 import java.awt.Color;
 
-public class TestCellsSimulator {
+public class TestCellsNoEventSimulator {
     public static void main(String[] args) {
 
 
@@ -11,7 +11,7 @@ public class TestCellsSimulator {
         do {
             try {
                 // Demande à l'utilisateur de choisir un modèle (0, 1 ou 2) pour la simulation
-                System.out.print("Choisissez un modèle (0, 1 ou 2) \n - 0 pour le jeu des automates cellulaires \n - 1 pour le jeu de la vie de Conway  \n - 2 pour le modèle de Schelling : ");
+                System.out.print("Choisissez un modèle (0, 1 ou 2) \n - 0 pour le jeu de la vie de Conway \n - 1 pour le jeu de l'immigration \n - 2 pour le modèle de Schelling : ");
                 modelType = scanner.nextInt();
             } catch (java.util.InputMismatchException e) {
                 System.out.println("Entrée incorrecte. Veuillez saisir un modèle valide (0, 1 ou 2).");
@@ -75,7 +75,7 @@ public class TestCellsSimulator {
         // Création de l'interface graphique avec une résolution de 1850x930 pixels et un fond noir
         GUISimulator gui = new GUISimulator(1850, 930, Color.BLACK);
         // Création de l'objet de simulation CellsSimulator avec les paramètres saisis
-        CellsEventSimulator cellsSimulator = new CellsEventSimulator(gui, 1850, 930, nbrRows, nbrColumns, nbrStates, threshold, modelType);
+        CellsSimulator cellsSimulator = new CellsSimulator(gui, 1850, 930, nbrRows, nbrColumns, nbrStates, threshold, modelType);
         // Réinitialisation de la simulation
         cellsSimulator.restart();
         // Définition du simulateur pour l'interface graphique

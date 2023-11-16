@@ -1,7 +1,7 @@
 import gui.GUISimulator;
 import java.awt.Color;
 
-public class TestBoidsSimulator {
+public class TestBoidsEventSimulator {
     public static void main(String[] args) {
         GUISimulator gui = new GUISimulator(1850, 930, Color.BLACK);
 
