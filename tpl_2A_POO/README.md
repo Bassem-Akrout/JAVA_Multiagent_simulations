@@ -2,11 +2,11 @@
 
 Les ressources distribuées contiennent:
 
-- le sujet
+- les codes .java des différents jeux classés dans différents dossiers faciles à y accéder
 - une librairie d'affichage graphique d'un simulateur (lib/gui.jar) et sa documentation (doc/index.html)
-- un fichier de démonstration du simulateur (src/TestInvader.java)
+- un MakeFile prêt à utiliser !
+- Un rapport qui explique vraiment tout ! 
 
-Une mini-introdution à la notation UML des diagrammes de classes est disponibe pour faciliter la lecture du sujet ([Fiche 7](https://programmation-orientee-objet.pages.ensimag.fr/poo/resources/fiches/07-UML/)).
 
 
 ## Compilation & exécution
