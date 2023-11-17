@@ -15,9 +15,10 @@ public class TestBoidsEventSimulator {
         int nbrBoids;
 
         // Demande à l'utilisateur de saisir le nombre de types de boids (supérieur à 1)
+        System.out.print("[INFO]:Les boids sont mangés s'ils sont à une distance <=10 de la bouche du prédateur située au centre du prédateur \n");
         do {
             try {
-                System.out.print("Veuillez saisir le nombre de types de boids (supérieur à 1) : ");
+                System.out.print("Veuillez saisir le nombre de types de boids entre 1 et 10 idéalement 2-5 : ");
                 nbrTypesBoids = scanner.nextInt();
 
                 if (nbrTypesBoids <= 1) {
@@ -28,7 +29,7 @@ public class TestBoidsEventSimulator {
                 scanner.next(); // Pour consommer la saisie incorrecte et éviter une boucle infinie
                 nbrTypesBoids = 0; // Réinitialiser la variable pour forcer la répétition de la boucle
             }
-        } while (nbrTypesBoids <= 1);
+        } while (nbrTypesBoids < 1 ||nbrTypesBoids >10 );
 
         // Demande à l'utilisateur de saisir le nombre de boids (entre 250 et 1000)
         do {
