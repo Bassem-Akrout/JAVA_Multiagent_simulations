@@ -7,6 +7,10 @@ import gui.GUISimulator;
 import java.awt.Point;
 import gui.Rectangle;
 
+/* Cette classe modélise un simulateur de gestionnaire d'évenements
+ * pour tous les types de jeux ( modeltype correspond au jeu que 
+ * tu veux )
+ */
 
 public class CellsEventSimulator implements Simulable {
     private Cells cells;  // Référence vers l'objet Cells

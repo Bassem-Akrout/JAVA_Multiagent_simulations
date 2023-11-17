@@ -2,10 +2,16 @@ import java.awt.Color;
 
 import java.awt.Point;
 
+
+/* Classe Abstraite cells qui modélise toutes les cellules 
+ (Les cellules ont des propriétés communes et c'est à ca que 
+ sert l'abstraction ! )
+ */
 public abstract class Cells {
     protected Point[][]cells;
     protected Color[][]initColors;
     protected Color[][]colors;
+    
     public Cells(int nbrRows,int nbrColumns, int screenWidth,int screenHeight ){
         //attributes init
         cells= new Point[nbrRows][nbrColumns];
@@ -23,12 +29,18 @@ public abstract class Cells {
             }
         }
     }
+
+    // Retourne la liste des cellules
     public Point[][] getCells(){
         return this.cells;
     }
+
+    // Retourne les couleurs des cellules 
     public Color[][] getColors(){
         return colors;
     }
+
+    // Réinitialisation de la liste des cellules !
     public void reInit(){
         int nbrRows= cells.length;
         int nbrColumns= cells[0].length;
@@ -38,6 +50,7 @@ public abstract class Cells {
             }
         }    
     }
-    protected abstract int countNeighbors(int row,int column);
-    public abstract void nextLogic();
+
+    protected abstract int countNeighbors(int row,int column); // Retourne le nombre de voisins
+    public abstract void nextLogic(); // Passage à l'étape suivante !
 }

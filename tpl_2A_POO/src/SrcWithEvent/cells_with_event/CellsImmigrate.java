@@ -5,6 +5,9 @@ import java.util.Random;
 import java.awt.Color;
 import java.awt.Point;
 
+/* Cette classe hérite de la classe Abstraite Cells 
+ et est implémentée pour le modèle de Schelling 
+ */
 
 public class CellsImmigrate extends Cells{
 

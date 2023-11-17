@@ -2,6 +2,10 @@ import gui.GUISimulator;
 import java.util.Scanner;
 import java.awt.Color;
 
+/* Ce test vous permet de choisir par vous même les paramètres 
+du jeu de votre choix ! Exécutez et découvrez la magie 
+par vous même !  */
+
 public class TestCellsEventSimulator {
     public static void main(String[] args) {
 

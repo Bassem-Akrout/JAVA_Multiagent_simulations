@@ -5,6 +5,10 @@ import gui.Rectangle;
 import java.awt.Point;
 import java.awt.Color;
 
+/* Cette classe hérite de la classe Abstraite Cells 
+ et est implémentée pour le modèle de Schelling 
+ */
+
 public class CellsEvent extends Event {
     private Cells cells;
     private GUISimulator gui;

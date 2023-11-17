@@ -1,6 +1,10 @@
 import java.awt.Color;
 import java.util.Random;
 
+/* Cette classe hérite de la classe Abstraite Cells 
+ et est implémentée pour le jeu de Conway
+ */
+
 public class CellsConway extends Cells {
     private int nbrStates;  /// nbr of colors
     

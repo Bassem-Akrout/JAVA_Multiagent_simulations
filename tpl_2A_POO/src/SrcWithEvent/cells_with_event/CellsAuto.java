@@ -1,10 +1,16 @@
 import java.util.Random;
 import java.awt.Color;
 
+/* Cette classe hérite de la classe Abstraite Cells 
+ et est implémentée pour le jeu d'automates Cellulaires
+ */
+
 public class CellsAuto extends Cells{    
 
     public CellsAuto(int nbrRows,int nbrColumns, int screenWidth, 
     int screenHeight ){
+        
+        // Constructeur pour la classe CellsAuto
         super(nbrRows, nbrColumns, screenWidth, screenHeight);
         Color[] colorList=new Color[]{Color.BLACK,Color.WHITE};
         Random random= new Random();
@@ -17,6 +23,7 @@ public class CellsAuto extends Cells{
         }  
     }
 
+    
     protected  int countNeighbors(int row,int column){
         int nbrRows = cells.length;
         int nbrColumns= cells[0].length;
