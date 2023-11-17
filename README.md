@@ -22,4 +22,7 @@ Cette simple démo s'applique à tous les autres jeux du projet !
 
 Profitez et n'oubliez pas de jeter un coup d'oeil sur le ***Rapport*** pour savoir plus à propos de notre structuration .
 
+## Voici le diagramme UML qui explique notre structuration ( Plus de détails dans le rapport ;)
+![Diagramme UML du projet ](diagrammeUML.png)
+
 
