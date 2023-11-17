@@ -18,10 +18,12 @@ public class BoidsEventsSimulator  implements Simulable {
     private double screenWidth;
     private double screenHeight;
     private EventManager eventManager; 
-    private int nbrTypes;
-    private Color[] colorList;
+    private int nbrTypes; // Nombre de groupement de boids 
+    private Color[] colorList; // Couleurs des groupements !
 
     public BoidsEventsSimulator(GUISimulator gui, int numBoids, double screenWidth, double screenHeight,int nbrTypes) {
+        // Constructeur pour un simulateur de Boids avec un gestionnaire d'événements
+        
         this.boids = new Boids(numBoids, screenWidth, screenHeight,nbrTypes);
         this.gui = gui;
         this.screenWidth = screenWidth;
@@ -40,6 +42,8 @@ public class BoidsEventsSimulator  implements Simulable {
 
 
     }
+
+    //Initialisation de l'interface graphique 
     private void initializeGraphics() {
         // Ajouter les éléments graphiques initiaux, par exemple les boids
         ArrayList<Boid> currentBoids = boids.getBoids();
@@ -70,6 +74,7 @@ public class BoidsEventsSimulator  implements Simulable {
         
     }
 
+    // Passage au prochain événement 
     @Override
     public void next() {
 

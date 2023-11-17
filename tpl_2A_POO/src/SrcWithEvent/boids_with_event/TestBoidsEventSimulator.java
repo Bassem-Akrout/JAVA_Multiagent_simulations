@@ -3,6 +3,10 @@ import java.awt.Color;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/* Ce test vous permet de choisir par vous même les paramètres 
+d'un jeu de votre choix ! Exécutez et découvrez la magie 
+par vous même !  */
+
 public class TestBoidsEventSimulator {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);

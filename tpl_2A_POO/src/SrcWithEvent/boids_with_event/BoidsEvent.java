@@ -17,6 +17,7 @@ public class BoidsEvent extends Event{
     private Color[] colorList;
 
     public BoidsEvent (int date , Boids boids,GUISimulator gui, double screenWidth,double screenHeight,int boidsGroup,Color[] colorList ) {
+        // Constructeur de BoidsEvent qui hérite de Event 
         super( date ) ;
         this.boids=boids;
         this.gui=gui;
@@ -26,6 +27,8 @@ public class BoidsEvent extends Event{
         this.colorList=colorList;
         
         }
+
+    // Fonction d'exécution d'un événement ! 
     @Override
     public void execute() {
         // Logique pour la prochaine étape de simulation

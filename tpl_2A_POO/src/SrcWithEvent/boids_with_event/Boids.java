@@ -6,11 +6,15 @@ public class Boids {
     private ArrayList<Boid> boids;
     private ArrayList<Boid> initialBoids; // Stocke les boids initiaux
 
+    /* Définition des constructeurs de Boids */
+
     public Boids(ArrayList<Boid> boids){
+
         this.boids=boids;
         this.initialBoids=boids;
     }
     public Boids(int numBoids, double screenWidth, double screenHeight,int nbrTypes) {
+        
         boids = new ArrayList<>();
         initialBoids = new ArrayList<>(); // Initialise la liste des boids initiaux
 
@@ -38,12 +42,17 @@ public class Boids {
         }
     }
 
+    // Retourne la liste des boids
     public ArrayList<Boid> getBoids(){
         return boids;
     }
+
+    // Retourne le nombre de boids
     public int getnumber(){
         return boids.size();
     }
+
+    // Retourne un groupe de boids
     public ArrayList<Boid> getGroup(int boidGroup){
         ArrayList<Boid> result=new ArrayList<>();
         for (Boid boid:boids){
@@ -53,6 +62,8 @@ public class Boids {
         }
         return result;
     }
+
+    // Réinitialise la liste des boids
     public void reInit() {
         boids.clear(); // Vide la liste actuelle de boids
     
@@ -70,6 +81,7 @@ public class Boids {
         }
     }
     
+    // Démarche pour passer d'un état à un état ! 
     public ArrayList<Boid>  nextLogic(double screenWidth, double screenHeight,int boidGroup) {
         // For each boid, calculate the acceleration and update the position
         ArrayList<Boid> boidsToRemove = new ArrayList<>(); // Store boids to be removed
@@ -130,7 +142,7 @@ public class Boids {
         return boidsToRemove;
     }
     
-
+    // Retourne les voisins d'un boid
     private ArrayList<Boid> getNeighbors(Boid boid,double screenWidth,double screenHeight,double neighbors_dist) {
         ArrayList<Boid> neighbors = new ArrayList<>();
         for (Boid otherBoid : boids) {
@@ -161,6 +173,7 @@ public class Boids {
         return neighbors;
     }
     
+    // Retourne le centre de masse des voisins d'un boid
     private Point2D.Double centerOfMass(ArrayList<Boid> neighbors) {
         double totalMass = 0;
         double centerOfMassX = 0;
@@ -182,6 +195,7 @@ public class Boids {
         return new Point2D.Double(centerOfMassX, centerOfMassY);
     }
 
+    // Retourne la masse totale des voisins d'un boid
     private double totalMass(ArrayList<Boid> neighbors){
         double totalMass = 0;
         for (Boid neighbor : neighbors) {

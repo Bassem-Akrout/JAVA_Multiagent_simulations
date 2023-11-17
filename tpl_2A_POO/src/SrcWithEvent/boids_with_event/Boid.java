@@ -2,22 +2,30 @@ import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
 public class Boid {
-    private double mass;
-    private Point2D.Double position;
-    private Point2D.Double velocity;
+    
+    private double mass; // masse du Boid
+    private Point2D.Double position; // position du boid
+    private Point2D.Double velocity; // vitesse du boid
 
     public Boid(double boidMass,double x, double y, double vx, double vy) {
+        
+        // Initialisation du constructeur
         mass=boidMass;
         position = new Point2D.Double(x, y);
         velocity = new Point2D.Double(vx, vy);
     }
 
+    // Retourne la position du boid
     public Point2D.Double getPosition() {
         return position;
     }
+
+    //Retourne la vitesse du boid
     public Point2D.Double getVelocity() {
         return velocity;
     }
+
+    //Retourne la masse du boid
     public int getMass() {
 
         return (int) mass;
@@ -28,6 +36,7 @@ public class Boid {
     double SEP_CST=10000000;
     double ALIGN_CST=10;
 
+    // Fonction d'ajustement de bordure
     private double adjustForBorder(double value, double limit) {
         if (value > limit / 2) {
             value -= limit;
@@ -37,7 +46,7 @@ public class Boid {
         return value;
     }
     
-
+    // Fonction de cohésion entre les boids
     public Point2D.Double cohesion(Point2D.Double centerOfMassPosition, double centerofMassPositionMass, double screenWidth, double screenHeight) {
         // Vecteur de direction entre la position actuelle et le centre de masse
         double dx = centerOfMassPosition.x - position.x;
@@ -63,7 +72,7 @@ public class Boid {
         return new Point2D.Double(forceX, forceY);
     }
 
-
+    // Fonction de séparation entre les boids
     public Point2D.Double separation(ArrayList<Boid> boidsInRadius, double screenWidth, double screenHeight) {
         // Calcul de la force de séparation
         double separationForceX = 0;
@@ -90,7 +99,7 @@ public class Boid {
         return new Point2D.Double(separationForceX, separationForceY);
     }
     
-
+    //Fonction d'alignement entre les boids
     public Point2D.Double alignement(ArrayList<Boid> boidsInRadius) {
         // Calcul de la force d'alignement
         double avgDirectionX = 0;
@@ -121,6 +130,9 @@ public class Boid {
         return new Point2D.Double(avgDirectionX, avgDirectionY);
     }
 
+    /*  Autre fonction d'ajustement pour les positions 
+    qu'on utilise seulement dans la fonction update 
+     */
     private double adjustForBorder2(double value, double limit) {
         // Use modulo to wrap around
         return (value + limit) % limit;
