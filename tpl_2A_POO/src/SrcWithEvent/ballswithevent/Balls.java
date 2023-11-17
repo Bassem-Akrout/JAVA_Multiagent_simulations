@@ -17,6 +17,7 @@ public class Balls  {
 
     public Balls() {
 
+        // Initialisation du constructeur 
         balls = new ArrayList<>();
         initial_balls = new ArrayList<>();
         ballsColors = new ArrayList<int[]>();
@@ -46,10 +47,12 @@ public class Balls  {
         }   
     }    
 
+    // Récupération des balles
     public ArrayList<Point> getBalls() {
         return this.balls;
     }
 
+    // Récupération des couleurs des balles
     public ArrayList<int[]> getColors(){
         return this.ballsColors;
     }
@@ -75,10 +78,7 @@ public class Balls  {
                 else if(direction==1){
                     balls_directions.set(i, 2);
                 }
-                /*else{
-                    
-                    System.out.println(ball);
-                }*/
+                
             }else if(ball.x<8){
                 if (direction==2){
                     balls_directions.set(i, 1);
@@ -86,10 +86,7 @@ public class Balls  {
                 else if(direction==3){
                     balls_directions.set(i, 0);
                 }
-                /*else{
-                    System.out.println("problem 00001 avec ball");
-                    System.out.println(ball);
-                }*/
+                
             }
             if (ball.y>920){
                 if (direction==0){
@@ -100,10 +97,7 @@ public class Balls  {
                 else if(direction==3){
                     balls_directions.set(i, 2);
                 }
-                /*else{
-                    System.out.println("problem 00002 avec ball");
-                    System.out.println(ball);
-                }*/
+                
             }else if(ball.y<8){
                 if (direction==1){
                     balls_directions.set(i, 0);
@@ -111,10 +105,7 @@ public class Balls  {
                 else if(direction==2){
                     balls_directions.set(i, 3);
                 }
-                /*else{
-                    System.out.println("problem 00002 avec ball");
-                    System.out.println(ball);
-                }*/
+                
 
             }
             

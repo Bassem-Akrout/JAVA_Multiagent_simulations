@@ -12,6 +12,7 @@ public class ballsEvent extends Event {
     private GUISimulator gui;  // Référence vers l'interface graphique
  
     public ballsEvent (int date,GUISimulator gui,Balls balls ) {
+        // Initialisation du constructeur qui hérite de la classe Event
         super( date ) ;
         this.balls=balls;
         this.gui=gui;

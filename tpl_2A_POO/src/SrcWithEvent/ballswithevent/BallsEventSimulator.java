@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 
 public class BallsEventSimulator implements Simulable {
+    //Initialisation du simulateur de balles
     private Balls balls;  // Référence vers l'objet Balls
     private GUISimulator gui;  // Référence vers l'interface graphique
     private EventManager eventManager;
@@ -20,9 +21,9 @@ public class BallsEventSimulator implements Simulable {
         this.eventManager= new EventManager();
         scheduleSimulationEvents(); 
 
-
-
     }
+
+    // Simulation de 10000 Evenements ( suffisant )
     private void scheduleSimulationEvents() {
         // Schedule events to advance the simulation at regular intervals
         int numSteps = 10000; // Number of simulation steps
@@ -35,11 +36,13 @@ public class BallsEventSimulator implements Simulable {
     }
     
 
+    // Fonction next qui passe à l'évenement suivant
     @Override
     public void next() {
         eventManager.next();
     }
 
+    // Réinitialisation du gestionnaire d'évenements et de l'interface graphique
     @Override
     public void restart() {
         // Réinitialisation de l'état des balles
