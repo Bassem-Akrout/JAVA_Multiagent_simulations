@@ -4,8 +4,8 @@ import java.util.ArrayList;
 public class Boid {
     
     private double mass; // masse du Boid
-    private Point2D.Double position; // position du boid
-    private Point2D.Double velocity; // vitesse du boid
+    private Point2D.Double position; // vecteur position du boid
+    private Point2D.Double velocity; // vecteur vitesse du boid
 
     public Boid(double boidMass,double x, double y, double vx, double vy) {
         

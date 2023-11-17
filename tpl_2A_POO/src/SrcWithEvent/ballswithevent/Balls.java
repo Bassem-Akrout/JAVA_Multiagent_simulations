@@ -5,6 +5,7 @@ import java.util.Random;
 public class Balls  {
 
     private ArrayList<Point> balls; // Liste de positions de balles
+    /* ArrayList serait utile si potentiellement on veut modifier le nombre des balles durant la simulation */
     private ArrayList<Point> initial_balls;// Liste initiale de positions de balles
     private ArrayList<Integer> balls_directions;// Liste de [0/1/2/3] 0: +dx,+dy 
                                                                     //1: +dx,-dy

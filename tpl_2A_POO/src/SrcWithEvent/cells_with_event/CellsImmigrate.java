@@ -11,7 +11,7 @@ import java.awt.Point;
 
 public class CellsImmigrate extends Cells{
 
-    private ArrayList<int[]> unoccupiedCells;
+    private ArrayList<int[]> unoccupiedCells; // liste de {row,column} ArrayListe est utile pour la dynamique des tailles des listes
     private ArrayList<int[]> initialUnoccupiedCells;
     private int threshold; /// k NBR DE VOISINS POUR SEGREG
 

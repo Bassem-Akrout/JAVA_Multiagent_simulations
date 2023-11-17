@@ -5,7 +5,8 @@ import java.awt.geom.Point2D;
 public class Boids {
     private ArrayList<Boid> boids;
     private ArrayList<Boid> initialBoids; // Stocke les boids initiaux
-
+    
+    /*Dynamisme de la taille de la liste necéssaire (on mange de boids) */
     /* Définition des constructeurs de Boids */
 
     public Boids(ArrayList<Boid> boids){
