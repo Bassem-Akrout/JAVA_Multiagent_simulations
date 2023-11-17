@@ -11,7 +11,7 @@ Les ressources distribuées contiennent:
 
 ## Compilation & exécution
 ### Avec un makefile? C'est plus facile non ? 
-On vous donne la chance de choisir ***les paramètres*** pour les automates cellulaires , le jeu de Conway et le modèle de Schelling ! 
+On vous donne la chance de choisir ***les paramètres*** pour les automates cellulaires , le jeu de Conway et le modèle de Schelling et pour boids ! 
 
 On vous a fourni un MakeFile à la racine ! 
 L'éxecution est assez facile .Voici comment la magie se passe: 
